@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:jsf="http://xmlsn.jcp.org/jsf"> 
+
+<h:head> 
+	<title>Gestión de Empleados</title>
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="X-UA-Conpatible" content="IE=edge"/>
+	
+	<h:outputStylesheet library="css" name="bootstrap.css"></h:outputStylesheet>
+	<h:outputScript library="js" name="bootstrap.min.js" target="body"/>
+	<h:outputScript library="js" name="jquery-3.4.1.min.js" /> 
+
+</h:head> 
+<h:body style="background-color:rgb(236,239,241)"> 
+	
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		  <a class="navbar-brand" href="#">GESTION DE EMPLEADOS</a>
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		    <span class="navbar-toggler-icon"></span>
+		  </button>
+		  <div class="collapse navbar-collapse" id="navbarNav">
+		  <h:form>
+		   
+		   </h:form>
+		  </div>
+		  
+		</nav>
+
+		<br></br><br></br>
+
+	 <main class="login-form">
+    <div class="cotainer">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                     <h5 class="card-header">Login</h5>
+                    <div class="card-body">
+                        <h:form>
+                       
+                       		<div class="form-group row">
+                                <label for="user" class="col-md-4 col-form-label text-md-right">Usuario</label>
+                                <div class="col-md-6">
+                                    <h:inputText class="form-control" value="#{loginBean.miPersonaVo.documento}" id="user"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+                                <div class="col-md-6">
+                                    <h:inputSecret value="#{loginBean.miPersonaVo.password}"  class="form-control" id="password" />
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-md-6 offset-md-4">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="remember" /> Remember Me 
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 offset-md-4">
+                                <h:commandButton action="#{loginBean.validarUsuario()}" class="btn btn-primary" value="Ingresar" />
+                                <a href="#" class="btn btn-link">
+                                    Forgot Your Password?
+                                </a>
+                            </div>
+                    
+                   </h:form>
+                </div>
+            </div>
+            <br></br>
+            <br></br>
+            <h:panelGroup rendered="#{loginBean.mostrarError}">
+							<div class="alert alert-danger" role="alert">
+								<div class="form-group row">
+						  			<h:outputLabel class="col-md-12" value="#{loginBean.mensaje}" />
+						  		</div>
+							</div>
+			</h:panelGroup>
+        </div>
+    </div>
+    </div>
+
+</main>
+	 
+
+	<footer class="footer bg-dark text-center">
+	  <div class="container">      
+	     <p>&copy; John Edward Garcia Saavedra.</p>
+	  </div>
+	</footer>
+
+</h:body> 
+</html>

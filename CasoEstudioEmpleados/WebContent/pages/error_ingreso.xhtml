@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<title>Gestión de Empleados</title>
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="X-UA-Conpatible" content="IE=edge"/>
+	
+	<h:outputStylesheet library="css" name="bootstrap.css"></h:outputStylesheet>
+	<h:outputScript library="js" name="bootstrap.min.js" target="body"/>
+	<h:outputScript library="js" name="jquery-3.4.1.min.js" /> 
+
+</h:head> 
+<h:body> 
+	
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		  <a class="navbar-brand" href="inicio.jsf">GESTION DE EMPLEADOS</a>
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		    <span class="navbar-toggler-icon"></span>
+		  </button>
+		  <div class="collapse navbar-collapse" id="navbarNav">
+		  <h:form>
+		    <ul class="navbar-nav">
+
+			 <li class="nav-item">
+			        <h:commandLink  styleClass="nav-link"  value="Acerca de..." />
+			 </li>
+			 			 
+		    </ul>
+		   </h:form>
+		  </div>
+		  
+		<h:form class="form-inline">
+	 		<h:commandButton class="btn btn-outline-success my-2 my-sm-0" value="Login" action="login" />
+	 	</h:form>
+		  
+		</nav>
+
+	 
+
+	<h:form>
+	
+	
+	<div class="container">
+	<br></br>
+	<div class="jumbotron jumbotron-fluid">
+	  <div class="container">
+	    <h1 class="display-4">ACCESO RESTRINGIDO!!!</h1>
+	    <br></br> 
+	    <p class="lead">Usted no tiene permisos para acceder a esta pagina, por favor inicie sesión desde el botón Login</p>
+	    
+	   
+	  </div>
+	</div>
+	</div>
+	</h:form>
+
+	<footer class="footer bg-dark text-center">
+	  <div class="container">      
+	     <p>&copy; Cristian David Henao H.</p>
+	  </div>
+	</footer>
+
+</h:body> 
+</html>

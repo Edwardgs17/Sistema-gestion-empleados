@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+
+<ui:composition template="/template/plantilla.xhtml">
+
+<ui:param name="tituloPagina" value="Consulta de Empleados" />	
+
+	<ui:define name="contenido">
+
+<h:form >
+		<br></br><br></br>
+	
+	<div class="container">	
+		<div class="card">
+		  <h5 class="card-header">Generar Pago</h5>
+		  <div class="card-body">
+		    <h5 class="card-title"></h5>
+		    <p class="card-text">Por favor ingrese el documento del empleado y presione en consultar</p>
+	
+	<div class="container">
+		<div class="form-group row justify-content-end">
+			<h:outputLabel  value="Documento: " for="documento"/>&nbsp;&nbsp;
+			<h:inputText class="form-control col-md-4" value="#{personaBean.miPersonaVo.documento}"  id="documento"/>&nbsp;&nbsp;
+			<h:commandButton class="btn btn-primary col-md-1" value="Consultar" action="#{personaBean.consultarPersona()}" />
+		</div>
+		    
+	    <div class="form-group row">
+			<h:outputLabel value="Nombres: "  for="nombre"/>&nbsp;&nbsp;&nbsp;&nbsp;
+			<h:outputText class="form-control col-md-11" value="#{personaBean.miPersonaVo.nombre}" id="nombre" />
+		</div>
+		
+		<div class="form-group row">
+			<h:outputLabel value="Telefono: " for="telefono"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<h:outputText class="form-control col-md-3" value="#{personaBean.miPersonaVo.telefono}" id="telefono" />&nbsp;
+		
+			<h:outputLabel value="Direccion: " for="direccion"/>&nbsp;
+			<h:outputText class="form-control col-md-4" value="#{personaBean.miPersonaVo.direccion}" id="direccion"/>&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		
+		</div>	
+		<div class="form-group row">
+			
+			<h:outputLabel value="Salario: " for="salario"/>&nbsp;&nbsp;&nbsp;&nbsp;
+			<h:outputText class="form-control col-md-3" value="#{personaBean.miPersonaVo.salario}" id="salario"/>
+		
+			<h:outputLabel class="col-md-2"  value="Cant Horas Extras: " for="extras"/>
+			<h:inputText class="form-control col-md-2" value="#{personaBean.miPersonaVo.cantidadHorasExtras}" id="extras"/>&nbsp;
+		</div>	
+		<br></br>	
+		<div class="container" >	
+			<div class="form-group row justify-content-end">	
+					<h:commandButton class="btn btn-danger col-md-2"  value="Pagar" action="#{personaBean.pagarPersona()}" rendered="#{loginBean.permisoAdmin}"/>
+			</div>
+		</div>	
+		<br></br>
+		    
+		  </div>
+		</div>
+	</div>
+		
+		</div>
+		
+			
+		<br></br>
+		
+	
+		<div class="container">
+		
+		<h:panelGroup rendered="#{personaBean.mostrar}">
+			<div class="alert alert-primary" role="alert">
+				<div class="form-group row">
+		  			<h:outputLabel class="col-md-12" value="#{personaBean.mensaje}" />
+		  		</div>
+			</div>
+		</h:panelGroup>
+		
+		<h:panelGroup rendered="#{personaBean.mostrarError}">
+			<div class="alert alert-danger" role="alert">
+				<div class="form-group row">
+		  			<h:outputLabel class="col-md-12" value="#{personaBean.mensaje}" />
+		  		</div>
+			</div>
+		</h:panelGroup>
+	</div>
+	
+</h:form>
+      
+
+
+	</ui:define>
+</ui:composition>	
+</html>

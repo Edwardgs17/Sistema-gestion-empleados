@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+	
+<h:head>
+	<title>#{tituloPagina}</title>
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="X-UA-Conpatible" content="IE=edge"/>
+	
+	<h:outputStylesheet library="css" name="bootstrap.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="jquery.dataTables.min.css"></h:outputStylesheet>
+	<h:outputScript library="js" name="bootstrap.min.js" target="body"/>
+	<h:outputScript library="js" name="jquery-3.4.1.min.js" />
+	<h:outputScript library="js" name="jquery.dataTables.min.js" />
+	
+
+	<f:metadata>
+		<f:event listener="#{loginBean.validarAcceso()}" type="preRenderView"></f:event>
+	</f:metadata>
+
+</h:head> 
+<h:body style="background-color:rgb(236,239,241)">
+
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		  <a class="navbar-brand" href="inicio.jsf">GESTION DE EMPLEADOS</a>
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		    <span class="navbar-toggler-icon"></span>
+		  </button>
+		  <div class="collapse navbar-collapse" id="navbarNav">
+		  <h:form>
+		    <ul class="navbar-nav">
+		     <li class="nav-item">
+			        <h:commandLink styleClass="nav-link" action="registro_personas" value="Registrar Empleado" rendered="#{loginBean.permisoAdmin}"/>
+			 </li>
+			 <li class="nav-item">
+		        <h:commandLink  styleClass="nav-link" action="consultar_lista_personas"  value="Consultar Empleado"/> 	
+			 </li>
+			 <li class="nav-item">
+		        <h:commandLink  styleClass="nav-link" action="Cambiar_contraseña"  value="Cambiar Contraseña" /> 	
+			 </li>
+			  <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Pagos
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <h:commandLink styleClass="nav-link" class="dropdown-item"  action="consultar_personas" value="Generar Pago" rendered="#{loginBean.permisoAdmin}"/>
+          <h:commandLink styleClass="nav-link" class="dropdown-item" value="Consultar Pago" action="consultar_pago"/>
+        </div>
+      		</li>
+			 <li class="nav-item">
+			
+			 </li>
+			 		
+			 			 
+		    </ul>
+		   </h:form>
+		  </div>
+		  
+		<h:form class="form-inline">
+			<h:commandLink value="#{loginBean.miPersonaVo.nombre}" style="color: white"/>&nbsp;&nbsp;
+	 		<h:commandButton class="btn btn-outline-success my-2 my-sm-0" value="Salir" action="#{loginBean.cerrarSesion()}" />
+	 	</h:form>
+		  
+		</nav>
+
+
+    <ui:insert name="contenido"/>
+
+
+
+	<footer class="footer bg-dark text-center">
+	  <div class="container">      
+	     <p>&copy; John Edward Garcia Saavedra.</p>
+	  </div>
+	</footer>
+	
+	
+	
+<script type="text/javascript">
+$(document).ready(function() {
+    $('.table').DataTable();
+} );
+</script>
+	
+</h:body>
+
+</html>

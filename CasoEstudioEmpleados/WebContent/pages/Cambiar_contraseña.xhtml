@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="/template/plantilla.xhtml">
+
+<ui:param name="tituloPagina" value="Cambiar Contraseña" />	
+
+	<ui:define name="contenido">
+
+<h:form >
+		<br></br><br></br>
+	
+	<div class="container">	
+		<div class="card">
+		  <h5 class="card-header">Cambiar Contraseña</h5>
+		  <div class="card-body">
+		    <h5 class="card-title"></h5>
+		    <p class="card-text">Ingrese nueva contraseña</p>
+	
+	<div class="container">
+
+		<div class="form-group row">
+			<h:outputLabel value="Contraseña nueva: " for=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<h:inputText class="form-control col-md-3" value="#{loginBean.miPersonaVo.password}" id="contraseñaNueva" />&nbsp;
+
+			<h:outputLabel value="Confirmar Contraseña: " for=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<h:inputText class="form-control col-md-3" value="#{loginBean.miPersonaVo.nuevaContraseña}" id="confirmarContraseña" />&nbsp;
+		</div>
+		<br></br>	
+		<div class="container" >	
+			<div class="form-group row justify-content-end">	
+				<h:commandButton class="btn btn-danger col-md-2" value="Actualizar Contraseña" action="#{loginBean.actualizarContraseña()}"/>
+			</div>
+		</div>	
+		<br></br>
+		    
+		  </div>
+		</div>
+	</div>
+		
+		</div>
+		
+			
+		<br></br>
+		
+	
+		<div class="container">
+		
+		<h:panelGroup rendered="#{loginBean.mensaje}">
+			<div class="alert alert-primary" role="alert">
+				<div class="form-group row">
+		  			<h:outputLabel class="col-md-12" value="#{personaBean.mensaje}" />
+		  		</div>
+			</div>
+		</h:panelGroup>
+		
+		<h:panelGroup rendered="#{personaBean.mostrarError}">
+			<div class="alert alert-danger" role="alert">
+				<div class="form-group row">
+		  			<h:outputLabel class="col-md-12" value="#{personaBean.mensaje}" />
+		  		</div>
+			</div>
+		</h:panelGroup>
+	</div>
+	
+</h:form>
+      
+
+
+	</ui:define>
+</ui:composition>	
+</html>

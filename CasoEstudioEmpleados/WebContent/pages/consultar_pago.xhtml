@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+
+<ui:composition template="/template/plantilla.xhtml">
+
+<ui:param name="tituloPagina" value="Consultar Lista de Empleados" />	
+
+	<ui:define name="contenido">
+ 	 
+	   
+		<br></br><br></br>
+	
+	<div class="container">	
+		<div class="card">
+		  <h5 class="card-header">Consulta lista de pagos</h5>
+		  <div class="card-body">
+		    <h5 class="card-title"></h5>
+		    <p class="card-text">Listado de Pagos</p>
+	
+				<div class="container">
+				 <h:form>
+					<h:dataTable class="table table-bordered table-hover text-center" style="width:100%" value="#{personaBean.listaPagos}" 
+			      		var="datos" border="1" rendered="#{personaBean.listaPagos.size()>0}">
+			      	<h:column>    				
+			         <f:facet name="header" >
+			            	<h:outputLabel value="Documento" />
+			            </f:facet> 
+			  	
+			            <h:outputLabel value="#{datos.documentoEmpleado}" />	               
+			         </h:column>
+			        <h:column>    				
+			         <f:facet name="header" >
+			            	<h:outputLabel value="Nombre" />
+			            </f:facet> 
+			           
+			            <h:outputLabel value="#{datos.nombreEmpleado}"/>            
+			         </h:column>
+			       <h:column>    				
+			         <f:facet name="header" >
+			            	<h:outputLabel value="Salario" />
+			            </f:facet> 
+			           
+			            <h:outputLabel value="#{datos.salario}"/>            
+			         </h:column>
+			         <h:column>    				
+			         <f:facet name="header" >
+			            	<h:outputLabel value="horas Trabajadas" />
+			            </f:facet> 
+			            <h:inputText class="form-control" value="#{datos.horasTrabajadas}" rendered="#{datos.editar}" /> 
+			            <h:outputLabel value="#{datos.horasTrabajadas}" rendered="#{not datos.editar}"/>            
+			         </h:column>
+			         <h:column>
+			          <f:facet name="header" >
+			            	<h:outputLabel value="Salario Total" />
+			            </f:facet> 
+			           
+			            <h:outputLabel value="#{datos.salarioTotal}"/>    
+			         </h:column>
+						<h:column>
+			           <f:facet name="header" >
+			            	<h:outputLabel value="Fecha Pago" />
+			            </f:facet> 
+			          
+			            	<h:outputLabel value="#{datos.fechaPago}"/>
+			         </h:column>
+			              <h:column>
+			            <f:facet name="header">
+			            	<h:outputLabel value="Acciones" />
+			            </f:facet>   
+			            <h:panelGroup>
+				            <h:commandLink class="btn btn-primary" actionListener="#{personaBean.editarPago(datos)}" value="Editar" rendered="#{not datos.editar}"  />
+				             &nbsp;
+				            <h:commandButton class="btn btn-info" actionListener="#{personaBean.guardarPago(datos)}" value="Guardar" rendered="#{datos.editar}" />
+				            &nbsp;
+			            </h:panelGroup>
+			            
+			         </h:column>
+			      </h:dataTable>
+				</h:form>
+				</div>
+			</div>
+		</div>	
+	</div>
+			
+		<br></br>
+		
+	
+		<div class="container">
+		
+		<h:panelGroup rendered="#{personaBean.mostrar}">
+			<div class="alert alert-primary" role="alert">
+				<div class="form-group row">
+		  			<h:outputLabel class="col-md-12" value="#{personaBean.mensaje}" />
+		  		</div>
+		  		<br></br>
+		  		<div class="form-group row">
+		  			<h:outputLabel class="col-md-12" value="#{personaBean.sueldoTotal}" />
+		  		</div>
+			</div>
+		</h:panelGroup>
+		<h:panelGroup rendered="#{personaBean.mostrarError}">
+			<div class="alert alert-danger" role="alert">
+				<div class="form-group row">
+		  			<h:outputLabel class="col-md-12" value="#{personaBean.mensaje}" />
+		  		</div>
+			</div>
+		</h:panelGroup>
+	</div>
+	
+      
+	</ui:define>
+</ui:composition>	
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+
+<ui:composition template="/template/plantilla.xhtml">
+
+<ui:param name="tituloPagina" value="Registro de Empleados" />	
+
+	<ui:define name="contenido">
+
+<h:form>	
+		<br></br><br></br><br></br>
+		
+		
+	
+	<div class="container">	
+		<div class="card">
+		  <h5 class="card-header">Registro de Empleados</h5>
+		  <div class="card-body">
+		    <h5 class="card-title"></h5>
+		    <p class="card-text">Por favor diligencie el Formulario</p>
+	
+	<div class="container">
+		    
+		    <div class="form-group row">
+		    
+			<h:outputLabel  value="Documento: " for="documento"/>&nbsp;&nbsp;
+			<h:inputText class="form-control col-md-3" value="#{personaBean.miPersonaVo.documento}" id="documento"/>&nbsp;
+			<h:outputLabel value="Nombres: " for="nombre"/>&nbsp;
+			<h:inputText class="form-control col-md-7" value="#{personaBean.miPersonaVo.nombre}" id="nombre" />
+		</div>
+		
+		<div class="form-group row">
+			<h:outputLabel value="Telefono: " for="telefono"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<h:inputText class="form-control col-md-3" value="#{personaBean.miPersonaVo.telefono}" id="telefono" />&nbsp;
+		
+			<h:outputLabel value="Direccion: " for="direccion"/>&nbsp;
+			<h:inputText class="form-control col-md-4" value="#{personaBean.miPersonaVo.direccion}" id="direccion"/>&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<h:outputLabel value="Sexo: " />&nbsp;
+			<h:selectOneMenu class="form-control col-md-2" value="#{personaBean.miPersonaVo.sexo}">
+				<f:selectItem itemValue="M" itemLabel="Masculino"/>
+				<f:selectItem itemValue="F" itemLabel="Femenino"/>
+			</h:selectOneMenu>
+		
+		</div>	
+		<div class="form-group row">
+		
+			<h:outputLabel value="Tipo: " />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<h:selectOneMenu class="form-control col-md-3" value="#{personaBean.miPersonaVo.tipo}">
+				<f:selectItem itemValue="1" itemLabel="Administrador"/>
+				<f:selectItem itemValue="2" itemLabel="Empleado"/>
+			</h:selectOneMenu>&nbsp;&nbsp;
+			
+			<h:outputLabel value="Salario: " for="salario"/>&nbsp;&nbsp;&nbsp;&nbsp;
+			<h:inputText class="form-control col-md-3" value="#{personaBean.miPersonaVo.salario}" id="salario"/>
+		
+
+		</div>	
+		<br></br>	
+		<div class="container">	
+			<div class="form-group row justify-content-end">
+				<h:commandButton class="btn btn-primary col-md-2" value="Registrar" action="#{personaBean.registrarPersona()}" />
+				&nbsp;&nbsp;
+				<h:commandButton class="btn btn-danger col-md-2"  value="Limpiar" action="#{personaBean.limpiarFormulario()}" />
+			</div>
+		</div>	
+		<br></br>
+		    
+		  </div>
+		</div>
+	</div>
+		
+		</div>
+		
+			
+		<br></br>
+		
+		<div class="container">
+		
+		<h:panelGroup rendered="#{personaBean.mostrar}">
+			<div class="alert alert-primary" role="alert">
+				<div class="form-group row">
+		  			<h:outputLabel class="col-md-12" value="#{personaBean.mensaje}" />
+		  		</div>
+		  		<br></br>
+		  		<div class="form-group row">
+		  			<h:outputLabel class="col-md-4" value="Nombre: #{personaBean.miPersonaVo.nombre}" />
+		  			<h:outputLabel class="col-md-4" value="Sexo: #{personaBean.miPersonaVo.sexo}" />
+		  			<h:outputLabel class="col-md-4" value="Direccion: #{personaBean.miPersonaVo.direccion}" />
+		  			
+		  		</div>		
+		  		<div class="form-group row">
+		  			<h:outputLabel class="col-md-12" value="#{personaBean.sueldoTotal}" />
+		  		</div>
+			</div>
+		</h:panelGroup>
+		
+		<h:panelGroup rendered="#{personaBean.mostrarError}">
+			<div class="alert alert-danger" role="alert">
+				<div class="form-group row">
+		  			<h:outputLabel class="col-md-12" value="#{personaBean.mensaje}" />
+		  		</div>
+			</div>
+		</h:panelGroup>
+	</div>
+			
+	</h:form>
+
+
+	</ui:define>
+</ui:composition>	
+</html>
